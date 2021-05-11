@@ -6,6 +6,7 @@ import { SchedulerComponent } from './scheduling/scheduler/scheduler.component';
 
 const routes: Routes = [
   { path: 'scheduler', component: SchedulerComponent },
+  { path: '', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
 ];
 
 @NgModule({
