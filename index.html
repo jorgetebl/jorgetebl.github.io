@@ -13,9 +13,26 @@
   
   <!-- Main CSS -->
   <link rel="stylesheet" href="./assets/css/index.bundle.css" />
+
+  <style>
+    .video-background{
+      position:absolute;
+      left: 0px;
+      top:0px;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      opacity: 0.2;
+    }
+
+      .video-background > video{
+        width: 100%;
+        height: 100%;
+      }
+  </style>
   
   <!-- Title -->
-  <title>Garaje Café - Restaurante, Cocktails, Tardeo, Música en directo en el Paseo Marítimo de Palma de Mallorca</title></head>
+  <title>Garaje Café - Restaurante, Cocktails, Tardeo, Música en directo en el Paseo Marítimo 45 de Palma de Mallorca</title></head>
 
 <body class="bg-black">
 
@@ -46,7 +63,7 @@
           <li class="nav-item dropdown dropdown-hover">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-1" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
-              Tardeo
+              Tardes
             </a>
   
             <ul class="dropdown-menu dropdown-menu-md" aria-labelledby="navbarDropdown-1">
@@ -164,56 +181,8 @@
                   href="./forgot-password.html">Forgot Password</a></li>
             </ul>
           </li>
-          <li class="nav-item dropdown dropdown-hover">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-4" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false" data-bs-auto-close="outside">
-              Shop
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown-4">
-              <li><a class="dropdown-item "
-                  href="./shop-product.html">Product</a></li>
-              <li class="dropend dropend-hover">
-                <a class="dropdown-item dropdown-toggle  "
-                  href="#" id="navbarDropend-1" data-bs-toggle="dropdown" aria-expanded="false"
-                  data-bs-auto-close="outside">Listing</a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropend-1">
-                  <li><a class="dropdown-item "
-                      href="./shop-listing.html">Full width</a></li>
-                  <li><a class="dropdown-item "
-                      href="./shop-listing-sidebar.html">Sidebar</a></li>
-                </ul>
-              </li>
-              <li><a class="dropdown-item "
-                  href="./shop-cart.html">Cart</a></li>
-              <li><a class="dropdown-item "
-                  href="./shop-checkout.html">Checkout</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown dropdown-hover d-none">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-5" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Docs
-            </a>
-            <ul class="dropdown-menu dropdown-menu-detailed" aria-labelledby="navbarDropdown-5">
-              <li><a class="dropdown-item " href="./docs/index.html">
-                  <span>
-                    <i class="bi bi-book"></i>
-                    Get Started
-                    <small>Customising and building</small>
-                  </span>
-                </a>
-              </li>
-              <li><a class="dropdown-item "
-                  href="./docs/accordion.html">
-                  <span>
-                    <i class="bi bi-grid"></i>
-                    Components
-                    <small>Full list of components</small>
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </li>
+          
+          
           <li class="nav-item d-lg-none">
             <a href="https://themes.getbootstrap.com/product/cube-multipurpose-template-ui-kit/"
               class="nav-link text-primary">Nuestra Carta</a>
@@ -235,7 +204,13 @@
 
 
   <!-- split screen -->
-  <section class="overflow-hidden inverted border-bottom">
+  <section class="overflow-hidden inverted border-bottom" style="background-color: #221e0d;">
+    <div class="video-background">
+      <video autoplay>
+        <source src="./assets/video/Video Of Bokeh Lights.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
     <div class="py-20 d-flex flex-column container min-vh-100 foreground">
       <div class="row align-items-center justify-content-center justify-content-lg-between my-auto">
         <div class="col-lg-7 col-xl-6 text-center text-lg-start foreground mb-10 mb-lg-0">
@@ -250,21 +225,21 @@
                       placeholder="Tu email">
                   </div>
                   <div class="col-auto">
-                    <a href="" class="btn btn-red btn-icon rounded-circle"><i class="bi bi-arrow-return-left"></i></a>
+                    <a href="" class="btn btn-red btn-icon rounded-circle" style="background-color: #d9ae18;border-color: #efd167;"><i class="bi bi-arrow-return-left"></i></a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-5 position-relative" style="z-index:1">
+        <div class="col-lg-5 position-relative pb-5" style="z-index:1">
           <div class="card equal-2-1 equal-lg-1-1 overflow-visible level-1">
             <div class="card-wrap">
               <img class="img-fluid" src="./assets/images/garajecafe.png" alt="Image" data-aos="fade-up"
                 data-aos-delay="200">
             </div>
           </div>
-          <img class="position-absolute top-50 start-50 translate-middle level-2" src="./assets/images/svg/pattern-lg-light.svg"
+          <img class="position-absolute top-50 start-50 translate-middle level-2" data-aos="fade-up" data-aos-delay="200" src="./assets/images/svg/pattern-lg-light.svg"
             alt="">
         </div>
       </div>
@@ -273,12 +248,12 @@
 
 
   <!-- content -->
-  <section class="py-20">
+  <section class="py-20" style="background-color: #221e0d;">
     <div class="container">
       <div class="row align-items-center justify-content-center justify-content-lg-between">
         
-        <div class="col-lg-5" data-aos="fade-up">
-          <a href="" class="card card-arrow bg-white text-red-hover">
+        <div class="col-lg-5 pb-5">
+          <a href="" class="card card-arrow bg-white text-orange-hover">
             <figure class="media equal-1-1" >
               <span  style="background-image: url('./assets/images/pexels-giulia-freitas-1857304.jpg')">
               </span>
@@ -289,16 +264,16 @@
           </a>
         </div>
         <div class="col-lg-6 col-xl-5 mb-5 mb-lg-0 inverted">
-          <h2 class="mb-5">El tardeo más informal</h2>
+          <h2 class="mb-5">Tardes, cañas y vinos</h2>
           <ul class="list-group list-group-minimal">
             <li class="list-group-item d-flex align-items-center">
-              <span class="display-2 fw-bold me-4 text-red w-10">1.</span> <span>Empieza la tarde con unas cañas y nuestros aperitivos. <br><b>Disfruta, ríe, ¡desconecta!</b></span>
+              <span class="display-2 fw-bold me-4 text-orange w-10">1.</span> <span>Empieza la tarde con unas cañas y nuestros aperitivos. <br><b>Disfruta, ríe, ¡desconecta!</b></span>
             </li>
             <li class="list-group-item d-flex align-items-center">
-              <span class="display-2 fw-bold me-4 text-red w-10">2.</span> <span>Conoce más gente o queda aquí con tu amigos. <br><b>Estamos cerca de todo</b></span>
+              <span class="display-2 fw-bold me-4 text-orange w-10">2.</span> <span>Conoce más gente o queda aquí con tu amigos. <br><b>Estamos cerca de todo</b></span>
             </li>
             <li class="list-group-item d-flex align-items-center">
-              <span class="display-2 fw-bold me-4 text-red w-10">3.</span> <span>¿Quieres más?.<br> <b>Conciertos en directo</b></span>
+              <span class="display-2 fw-bold me-4 text-orange w-10">3.</span> <span>¿Quieres más?.<br> <b>Conciertos en directo</b></span>
             </li>
           </ul>
         </div>
@@ -314,20 +289,18 @@
           <h2 class="mb-5">El restaurante</h2>
           <ul class="list-group list-group-minimal">
             <li class="list-group-item d-flex align-items-center">
-              <span class="display-2 fw-bold me-4 text-red w-10">1.</span> <span>Para picar tenemos mucha variedad pero prueba <br><b>Las Croquetas del Chef</b>... ¡qué delicia!</span>
+              <span class="display-2 fw-bold me-4 text-orange w-10">1.</span> <span>Para picar tenemos mucha variedad pero prueba <br><b>Las Croquetas del Chef</b>... ¡qué delicia!</span>
             </li>
             <li class="list-group-item d-flex align-items-center">
-              <span class="display-2 fw-bold me-4 text-red w-10">2.</span> <span>Nuestras carnes son de lo más tierno. <br><b>La Hamburguesa de Carrillera Trufada</b>... ¡es una pasada!</span>
+              <span class="display-2 fw-bold me-4 text-orange w-10">2.</span> <span>Nuestras carnes son de lo más tierno. <br><b>La Hamburguesa de Carrillera Trufada</b>... ¡es una pasada!</span>
             </li>
             <li class="list-group-item d-flex align-items-center">
-              <span class="display-2 fw-bold me-4 text-red w-10">3.</span> <span>Lo payés no puede faltar. Las tradiciones se cuidan.<br> <b>Nuestro Pa amb oli Especial</b>... ¡viene con todo!</span>
+              <span class="display-2 fw-bold me-4 text-orange w-10">3.</span> <span>Lo payés no puede faltar. Las tradiciones se cuidan.<br> <b>Nuestro Pa amb oli Especial</b>... ¡viene con todo!</span>
             </li>
           </ul>
         </div>
-        <div class="col-lg-5" data-aos="fade-up">
-          <img class="position-absolute top-50 start-50 translate-middle level-2" src="./assets/images/svg/shadow.svg"
-            alt="">
-          <a href="" class="card card-arrow bg-white text-red-hover">
+        <div class="col-lg-5 pb-5">
+          <a href="" class="card card-arrow bg-white text-orange-hover">
             <figure class="media equal-1-1" >
               <span  style="background-image: url('./assets/images/pexels-oliver-sjöström-1059040.jpg')">
               </span>
@@ -346,8 +319,8 @@
     <div class="container">
       <div class="row align-items-center justify-content-center justify-content-lg-between">
         
-        <div class="col-lg-5" data-aos="fade-up">
-          <a href="" class="card card-arrow bg-white text-red-hover">
+        <div class="col-lg-5 pb-5">
+          <a href="" class="card card-arrow bg-white text-orange-hover">
             <figure class="media equal-1-1" >
               <span  style="background-image: url('./assets/images/pexels-matheus-ferrero-1942035.jpg')">
               </span>
@@ -361,13 +334,13 @@
           <h2 class="mb-5">Conciertos en directo</h2>
           <ul class="list-group list-group-minimal">
             <li class="list-group-item d-flex align-items-center">
-              <span class="display-2 fw-bold me-4 text-red w-10">1.</span> <span>Cambia el mood. Disfruta de tu gente. <br><b>Escucha música en directo</b></span>
+              <span class="display-2 fw-bold me-4 text-orange w-10">1.</span> <span>Cambia el mood. Disfruta de tu gente. <br><b>Escucha música en directo</b></span>
             </li>
             <li class="list-group-item d-flex align-items-center">
-              <span class="display-2 fw-bold me-4 text-red w-10">2.</span> <span>Traemos artistas cada semana. <br><b>Jaime Anglada, Carolina Cerezuela</b>... </span>
+              <span class="display-2 fw-bold me-4 text-orange w-10">2.</span> <span>Traemos artistas cada semana. <br><b>Jaime Anglada, Carolina Cerezuela</b>... </span>
             </li>
             <li class="list-group-item d-flex align-items-center">
-              <span class="display-2 fw-bold me-4 text-red w-10">3.</span> <span>Y cuando cae la noche, baila y diviértete<br> <b>hasta que el cuerpo aguante</b></span>
+              <span class="display-2 fw-bold me-4 text-orange w-10">3.</span> <span>Y cuando cae la noche, baila y diviértete<br> <b>hasta que el cuerpo aguante</b></span>
             </li>
           </ul>
         </div>
@@ -427,151 +400,27 @@
   </section>
 
 
-  <!-- cta -->
-  <section class="py-15 py-xl-20 border-top inverted">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <span class="eyebrow text-red mb-2">Why Cube ?</span>
-          <h3 class="font-weight-bold mb-4">Learn more about our car sharing platform in the light demo version or get
-            in the driver's seat and get paid</h3>
-          <div class="d-inline-flex align-items-center border p-1 rounded-pill pe-3">
-            <a class="btn btn-red text-white btn-icon rounded-pill me-2" data-bp='{"ytSrc": "JFm7YDVlqnI"}'><i
-                class="bi bi-play-fill fs-5"></i></a>
-            <span><span class="fw-bold">Video</span> &mdash; 25 seconds</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-
-  <!-- split screen -->
-  <section class="py-20 mx-lg-3 inverted overflow-hidden bg-orange d-none">
-    <div class="container">
-      <div class="row justify-content-center justify-content-lg-between ">
-        <div class="col-lg-6 col-xl-5 text-white order-lg-2 mb-5 mb-lg-0">
-          <span class="eyebrow text-muted mb-2">¿Qué más?</span>
-          <h2 class="mb-5">El tardeo más informal.</h2>
-          <ul class="list-group list-group-minimal">
-            <li class="list-group-item d-flex align-items-start">
-              <div class="icon-box bg-white rounded-circle me-2"><i class="bi bi-check2 text-black"></i>
-              </div>
-              Lorem ipsum dolor, sit,
-              amet consectetur adipisicing elit. Eos earum odio explicabo corrupti blanditiis laudantium architecto
-            </li>
-            <li class="list-group-item d-flex align-items-start">
-              <div class="icon-box bg-white rounded-circle me-2"><i class="bi bi-check2 text-black"></i>
-              </div>
-              Lorem ipsum dolor, sit,
-              amet consectetur adipisicing elit. Eos earum odio explicabo corrupti blanditiis laudantium architecto
-            </li>
-            <li class="list-group-item d-flex align-items-start">
-              <div class="icon-box bg-white rounded-circle me-2"><i class="bi bi-check2 text-black"></i>
-              </div>
-              Lorem ipsum dolor, sit,
-              amet consectetur adipisicing elit. Eos earum odio explicabo corrupti blanditiis laudantium architecto
-            </li>
-          </ul>
-        </div>
-        <div class="col-lg-5 order-lg-1" data-aos="fade-up">
-          <div class="card equal-2-1 equal-lg-1-1 overflow-visible">
-            <div class="card-wrap">
-              <img class="img-fluid test" src="./assets/images/app-2.png" alt="Image">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-
-  <!-- testimonial -->
-  <section class="py-20 border-top inverted">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <blockquote class="blockquote">
-            <span class="lh-1 fs-1 mb-0">"</span>
-            <p class="fs-3 mb-4"><span class="text-red">Build better websites.</span> A new template
-              inspired by the
-              world’s best design practices.</p>
-            <footer class="blockquote-footer">
-              <span class="d-block lh-1 text-black">Valerie Doe</span>
-              <small>Senior Product Designer</small>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-  <section class="py-20 bg-red inverted overflow-hidden">
-    <div class="container foreground">
-      <div class="row justify-content-center mb-8">
-        <div class="col-lg-8 text-center">
-          <h2>Take control of your app.</h2>
-        </div>
-      </div>
-      <div class="row g-5 justify-content-center justify-content-lg-between align-items-center">
-        <div class="col-lg-4 order-lg-1" data-aos="fade-right">
-          <ul class="list-unstyled text-center text-lg-end pe-lg-5">
-            <li>
-              <p class="fs-lg text-muted"><span class="text-white">Professional relocation</span> package to help
-                you move to Amsterdam.</p>
-            </li>
-            <li class="mt-5">
-              <p class="fs-lg text-muted"><span class="text-white">We know how</span> to manage distributed teams,
-                so working from home is an option for most of our vacancies.</p>
-            </li>
-          </ul>
-        </div>
-        <div class="col-lg-4 order-lg-3" data-aos="fade-left">
-          <ul class="list-unstyled text-center text-lg-start ps-lg-5">
-            <li>
-              <p class="fs-lg text-muted"><span class="text-white">Professional relocation</span> package to help
-                you move to Amsterdam.</p>
-            </li>
-            <li class="mt-5">
-              <p class="fs-lg text-muted"><span class="text-white">We know how</span> to manage distributed teams,
-                so working from home is an option for most of our vacancies.</p>
-            </li>
-          </ul>
-        </div>
-        <div class="col-lg-4 order-lg-2">
-          <div class="card equal-2-1 equal-lg-1-1 overflow-visible">
-            <div class="card-wrap">
-              <img class="img-fluid" src="./assets/images/app-2.png" alt="Image" data-aos="fade-up"
-                data-aos-delay="100">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <img class="position-absolute top-100 start-50 translate-middle" src="./assets/images/svg/pattern-lg-light.svg"
-      alt="Image">
-  </section>
 
 
   <section class="py-15 py-xl-20 bg-black inverted">
     <div class="container">
       <div class="row justify-content-center my-auto">
         <div class="col-lg-8 text-center">
-          <h2 class="mb-5">Ready to start cruising your city? Download Cube App</h2>
+          <h2 class="mb-5">Conoce todas las novedades y los próximos conciertos</h2>
           <div class="row justify-content-center g-1">
-            <div class="col-auto">
-              <a href="" class="btn btn-red rounded-pill">
-                <img src=" ./assets/images/logo/appstore.svg" alt="App Store">
-              </a>
-            </div>
-            <div class="col-auto">
-              <a href="" class="btn btn-red rounded-pill">
-                <img src=" ./assets/images/logo/googleplay.svg" alt="Google play">
-              </a>
+            <div class="col-md-5 col-lg-4">
+              <div class="grouped-inputs border p-1 rounded-pill">
+                <div class="row">
+                  <div class="col">
+                    <input type="text" class="form-control rounded-pill px-3" aria-label="Text input"
+                      placeholder="Your email">
+                  </div>
+                  <div class="col-auto">
+                    <a href="" class="btn btn-red btn-icon rounded-circle"><i class="bi bi-arrow-return-left"></i></a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -584,31 +433,10 @@
   <footer class="py-15 py-xl-20 bg-black inverted border-top">
     <div class="container">
       <div class="row g-4 g-lg-5 mb-10">
-        <div class="col-md-3 text-center text-md-start">
-          <a href="./index.html" class="navbar-brand"><img src="./assets/images/logo/logo-light.svg" alt="Logo"></a>
+        <div class="col-md-5 text-center text-md-start">
+          <a href="./index.html" class="navbar-brand"><img src="./assets/images/garajecafe.png" alt="Logo"></a>
         </div>
-        <div class="col-md-4 col-lg-5 text-center text-md-start">
-          <ul class="list-unstyled">
-            <li class="mb-1"><a href="" class="text-reset text-primary-hover">documentation</a></li>
-            <li class="mb-1"><a href="" class="text-reset text-primary-hover">components</a></li>
-            <li class="mb-1"><a href="" class="text-reset text-primary-hover">blocks</a></li>
-            <li class="mb-1"><a href="" class="text-reset text-primary-hover">changelog</a></li>
-            <li><a href="" class="text-reset text-primary-hover">roadmap</a></li>
-          </ul>
-        </div>
-        <div class="col-md-5 col-lg-4">
-          <div class="grouped-inputs border p-1 rounded-pill">
-            <div class="row">
-              <div class="col">
-                <input type="text" class="form-control rounded-pill px-3" aria-label="Text input"
-                  placeholder="Your email">
-              </div>
-              <div class="col-auto">
-                <a href="" class="btn btn-red btn-icon rounded-circle"><i class="bi bi-arrow-return-left"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </div>
       <div class="row align-items-center g-1 g-lg-6 text-muted">
         <div class="col-md-6 col-lg-5 order-lg-2 text-center text-md-start">
@@ -619,7 +447,7 @@
           </ul>
         </div>
         <div class="col-md-6 col-lg-4 text-center text-md-end order-lg-3">
-          <span class="small">5th Avenue, New York USA 10255</span>
+          <span class="small">Paseo Marítimo de Palma, 45</span>
         </div>
         <div class="col-lg-3 order-lg-1 text-center text-md-start">
           <p class="small">Copyrights © 2021</p>
