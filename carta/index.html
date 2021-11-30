@@ -189,18 +189,19 @@
                 //FILTER THE ACCORDION ELEMENT
                   if(category===record.get('Categoria')){
                     console.log('acc item: ', category+": " +record.get('Titulo'));
+                    let description=!record.get("Descripción")?"":record.get("Descripción")
                     //CREATE THE ACCORDION ITEM
                       $('#accordion-'+record.get('id-categoria')).append(`<div class="accordion-item">
                               <h2 class="accordion-header" id="heading-`+record.get('id-categoria')+`-`+recordItem+`">
                                 <button class="accordion-button lead collapsed" type="button" data-bs-toggle="collapse"
-                                  data-bs-target="#collapse`+record.get('id-categoria')+`-`+recordItem+`" aria-expanded="false" aria-controls="collapse-1-1">
+                                  data-bs-target="#collapse-`+record.get('id-categoria')+`-`+recordItem+`" aria-expanded="false" aria-controls="collapse-`+record.get('id-categoria')+`-`+recordItem+`">
                                   `+ record.get("Titulo")+` - `+record.get("Precio") +`
                                 </button>
                               </h2>
-                              <div id="collapse`+record.get('id-categoria')+`-`+recordItem+`" class="accordion-collapse collapse" aria-labelledby="heading-`+record.get('id-categoria')+`-`+recordItem+`"
-                                data-bs-parent="#accordion-1">
+                              <div id="collapse-`+record.get('id-categoria')+`-`+recordItem+`" class="accordion-collapse collapse" aria-labelledby="heading-`+record.get('id-categoria')+`-`+recordItem+`"
+                                data-bs-parent="#accordion-`+record.get('id-categoria')+`">
                                 <div class="accordion-body">
-                                  <p class="text-secondary">`+ record.get("Descripción")+`</p>
+                                  <p class="text-secondary">`+ description +`</p>
                                 </div>
                               </div>
                             </div>`)
