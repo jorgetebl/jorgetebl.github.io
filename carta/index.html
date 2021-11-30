@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Favicon -->
+  <!-- <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon" /> -->
+  
+  <!-- Libs CSS -->
+  <link rel="stylesheet" href="../assets/css/libs.bundle.css" />
+  
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../assets/css/index.bundle.css" />
+
+  <style>
+
+.background-section-plants{
+        position: absolute;
+        left: 0px;
+        top:0px;
+        width: 100%;
+        height: 100%;
+      opacity: 0.2;
+        background-image: url(../assets/images/lawrence-kayku-frWOcVisp8U-unsplash.jpg);
+        background-size: contain;
+      }
+
+  </style>
+  
+  <!-- Title -->
+  <title>Carta de Garaje Café</title></head>
+
+<body class="bg-black">
+
+
+  
+  <!-- navbar -->
+  <nav id="mainNav" class="navbar fixed-top navbar-expand-lg navbar-sticky navbar-dark">
+    <div class="container">
+      <a href="https://garajecafe.com" class="navbar-brand"><b>Garaje Café</b></a>
+  
+      <!-- primary -->
+      <div class="collapse navbar-collapse" id="navbar" data-bs-parent="#mainNav">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown dropdown-hover">
+            <a class="nav-link" href="https://garajecafe.com/?#tardes" id="navbarDropdown-1" role="button" >
+              Tardes
+            </a>
+  
+          </li>
+          <li class="nav-item dropdown dropdown-hover">
+            <a class="nav-link" href="https://garajecafe.com/?#restaurante" id="navbarDropdown-2" role="button" >
+              Restaurante
+            </a>
+          </li>
+          <li class="nav-item dropdown dropdown-hover">
+            <a class="nav-link" href="https://garajecafe.com/?#conciertos" id="navbarDropdown-3" role="button" data-bs-auto-close="outside">
+              Música en directo
+            </a>
+          </li>
+          <li class="nav-item dropdown dropdown-hover">
+            <a class="nav-link" href="https://garajecafe.com/?#fotos" id="navbarDropdown-3" role="button" data-bs-auto-close="outside">
+              Fotos
+            </a>
+          </li>
+          <li class="nav-item dropdown dropdown-hover">
+            <a class="nav-link" href="https://garajecafe.com/?#quienes" id="navbarDropdown-3" role="button" data-bs-auto-close="outside">
+              Quienes somos
+            </a>
+          </li>
+          
+          
+          <li class="nav-item d-lg-none">
+            <a href=""
+              class="nav-link text-light">Nuestra Carta</a>
+          </li>
+        </ul>
+      </div>
+  
+  
+  
+      <!-- mobile user menu -->
+  
+  
+  
+  
+    </div>
+  </nav>
+  
+  
+
+
+  <!-- accordion -->
+  <section class="py-15 py-xl-20 text-white" style="background-color: #221e0d;">
+    <div class="background-section-plants"></div>
+    <div class="container mt-10">
+      <div class="row mb-10">
+        <div class="col text-center">
+          <h1 class="mb-1">Carta de comida de Garaje Café</h1>
+        </div>
+      </div>
+      <div id="carta-zone" class="row g-3 g-xl-5">
+        <div class="col-lg-6 align-self-center" id="carta-zone-col">
+         
+        </div>
+        <div class="col-lg-6">
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- footer -->
+<footer class="py-15 py-xl-20 bg-black inverted border-top">
+  <div class="container">
+    <div class="row g-4 g-lg-5 mb-10">
+      <div class="col-md-5 text-center text-md-start"><img width="40%" src="../assets/images/garajecafe.png" alt="Logo">
+      </div>
+      
+    </div>
+    <div class="row align-items-center g-1 g-lg-6 text-muted">
+      <div class="col-md-6 col-lg-5 order-lg-2 text-center text-md-start">
+        <ul class="list-inline small">
+          <li class="list-inline-item"><a href="" class="text-reset text-primary-hover">facebook</a></li>
+          <li class="list-inline-item ms-1"><a href="" class="text-reset text-primary-hover">twitter</a></li>
+          <li class="list-inline-item ms-1"><a href="" class="text-reset text-primary-hover">linkedin</a></li>
+        </ul>
+      </div>
+      <a href="" class="col-md-6 col-lg-4 text-center text-md-end order-lg-3">
+        <span class="small">Paseo Marítimo de Palma, 45</span>
+      </a>
+      <div class="col-lg-3 order-lg-1 text-center text-md-start">
+        <p class="small">Copyrights © 2021</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- javascript -->
+  <script src="../assets/js/vendor.bundle.js"></script>
+  <script src="../assets/js/index.bundle.js"></script>
+  <script src="../assets/js/jquery-3.6.0.min.js"></script>
+  <script src="../assets/js/airtable.browser.js"></script>
+  <script>
+    var Airtable = require('airtable');
+
+    Airtable.configure({
+        endpointUrl: 'https://api.airtable.com',
+        apiKey: 'keyo0E7W5gHCFV6RI'
+    });
+    var base = Airtable.base('app1uvRsd1WbW8T4m');
+    base('Carta de Comidas').select({
+        // Selecting the first 3 records in Grid view:
+        maxRecords: 150,
+        view: "Grid view"
+    }).eachPage(function page(records, fetchNextPage) {
+        // This function (`page`) will get called for each page of records.
+
+        //GET CATEGORIES
+        let arrayCategories=[]
+        records.forEach(function(record) {
+            console.log('Retrieved', record.get('id-categoria'));
+            arrayCategories.push(record.get('Categoria'))
+            //CREATE THE CATEGORIA ELEMENT
+            if($('#accordion-'+record.get('id-categoria')).length==0){
+                $("#carta-zone-col").html($("#carta-zone-col").html()+`<div class="card border bg-white text-dark  mt-3 mt-xl-5">
+                      <div class="card-body">
+                        <h3 class="fs-4 my-3">`+record.get('Categoria')+`</h3>
+                        <div class="accordion" id="accordion-`+record.get('id-categoria')+`">
+                          
+                          
+                          
+                        </div>
+                        
+                      </div>
+                    </div>`)
+                  }
+        });
+
+        //Remove repeated categories
+          arrayCategories = arrayCategories.filter(function(item, pos) {
+              return arrayCategories.indexOf(item) == pos;
+          })
+        //LOOP FOR EVERY CATEGORY
+        arrayCategories.forEach((category)=>{
+            recordItem=0;
+            records.forEach(function(record) {
+                //FILTER THE ACCORDION ELEMENT
+                  if(category===record.get('Categoria')){
+                    console.log('acc item: ', category+": " +record.get('Titulo'));
+                    //CREATE THE ACCORDION ITEM
+                      $('#accordion-'+record.get('id-categoria')).append(`<div class="accordion-item">
+                              <h2 class="accordion-header" id="heading-`+record.get('id-categoria')+`-`+recordItem+`">
+                                <button class="accordion-button lead collapsed" type="button" data-bs-toggle="collapse"
+                                  data-bs-target="#collapse`+record.get('id-categoria')+`-`+recordItem+`" aria-expanded="false" aria-controls="collapse-1-1">
+                                  `+ record.get("Titulo")+` - `+record.get("Precio") +`
+                                </button>
+                              </h2>
+                              <div id="collapse`+record.get('id-categoria')+`-`+recordItem+`" class="accordion-collapse collapse" aria-labelledby="heading-`+record.get('id-categoria')+`-`+recordItem+`"
+                                data-bs-parent="#accordion-1">
+                                <div class="accordion-body">
+                                  <p class="text-secondary">`+ record.get("Descripción")+`</p>
+                                </div>
+                              </div>
+                            </div>`)
+
+                            recordItem=recordItem+1
+                  }
+            });
+        })
+            
+
+
+        // To fetch the next page of records, call `fetchNextPage`.
+        // If there are more records, `page` will get called again.
+        // If there are no more records, `done` will get called.
+        fetchNextPage();
+
+    }, function done(err) {
+        if (err) { console.error(err); return; }
+    });
+  </script>
+</body>
+
+</html>
