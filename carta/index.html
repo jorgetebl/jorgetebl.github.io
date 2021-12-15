@@ -14,6 +14,12 @@
   <!-- Main CSS -->
   <link rel="stylesheet" href="../assets/css/index.bundle.css" />
 
+
+  <script>
+    let isNight=new Date().getHours()<14;
+  </script>
+
+
   <style>
 
 .background-section-plants{
@@ -27,6 +33,24 @@
         background-size: contain;
       }
 
+      .nav-tabs .nav-link.active {
+          color: #ffffff;
+          border-color: #ffc107;
+          background: transparent;
+          border-bottom: 4px solid #ffffff;
+      }
+
+      .no-knob::after{
+          flex-shrink: 0;
+          width: 1.25rem;
+          height: 1.25rem;
+          margin-left: auto;
+          content: "";
+          background-image: url() !important;
+          background-repeat: no-repeat;
+          background-size: 1.25rem;
+          transition: transform 0.2s ease-in-out;
+      }
   </style>
   
   <!-- Title -->
@@ -98,16 +122,45 @@
     <div class="container mt-10">
       <div class="row mb-10">
         <div class="col text-center">
-          <h1 class="mb-1">Carta de comida de Garaje Café</h1>
+          <h1 class="mb-1">Carta de Garaje Café</h1>
         </div>
       </div>
-      <div id="carta-zone" class="row g-3 g-xl-5">
-        <div class="col-lg-6 align-self-center" id="carta-zone-col">
-         
+
+      <!-- TABS -->
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link h3" id="comida-tab" data-bs-toggle="tab" data-bs-target="#comida" type="button" role="tab" aria-controls="comida" aria-selected="true">Comida</button>
+        </li>
+        <li class="nav-item ml-5" role="presentation">
+          <button class="nav-link active h3" id="bebida-tab" data-bs-toggle="tab" data-bs-target="#bebida" type="button" role="tab" aria-controls="bebida" aria-selected="false">Bebida</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade show active" id="bebida" role="tabpanel" aria-labelledby="bebida-tab">
+          <div id="carta-bebida-zone" class="row g-3 g-xl-5">
+            <div class="col-lg-6 align-self-center" id="carta-bebida-zone-col">
+             
+            </div>
+            <div class="col-lg-6">
+            </div>
+          </div>
         </div>
-        <div class="col-lg-6">
+        <div class="tab-pane fade " id="comida" role="tabpanel" aria-labelledby="comida-tab">
+          <div id="carta-zone" class="row g-3 g-xl-5">
+            <div class="col-lg-6 align-self-center" id="carta-zone-col">
+             
+            </div>
+            <div class="col-lg-6">
+            </div>
+          </div>
+
+
         </div>
       </div>
+
+      <!-- END TABS-->
+      
     </div>
   </section>
 
@@ -150,78 +203,158 @@
         apiKey: 'keyo0E7W5gHCFV6RI'
     });
     var base = Airtable.base('app1uvRsd1WbW8T4m');
-    base('Carta de Comidas').select({
-        // Selecting the first 3 records in Grid view:
-        maxRecords: 150,
-        view: "Grid view"
-    }).eachPage(function page(records, fetchNextPage) {
-        // This function (`page`) will get called for each page of records.
 
-        //GET CATEGORIES
-        let arrayCategories=[]
-        records.forEach(function(record) {
-            console.log('Retrieved', record.get('id-categoria'));
-            arrayCategories.push(record.get('Categoria'))
-            //CREATE THE CATEGORIA ELEMENT
-            if($('#accordion-'+record.get('id-categoria')).length==0){
-                $("#carta-zone-col").html($("#carta-zone-col").html()+`<div class="card border bg-white text-dark  mt-3 mt-xl-5">
-                      <div class="card-body">
-                        <h3 class="fs-4 my-3">`+record.get('Categoria')+`</h3>
-                        <div class="accordion" id="accordion-`+record.get('id-categoria')+`">
-                          
-                          
-                          
-                        </div>
-                        
-                      </div>
-                    </div>`)
-                  }
-        });
+    //READ COMIDA
+          base('Carta de Comidas').select({
+              // Selecting the first 3 records in Grid view:
+              maxRecords: 150,
+              view: "Grid view"
+          }).eachPage(function page(records, fetchNextPage) {
+              // This function (`page`) will get called for each page of records.
 
-        //Remove repeated categories
-          arrayCategories = arrayCategories.filter(function(item, pos) {
-              return arrayCategories.indexOf(item) == pos;
-          })
-        //LOOP FOR EVERY CATEGORY
-        arrayCategories.forEach((category)=>{
-            recordItem=0;
-            records.forEach(function(record) {
-                //FILTER THE ACCORDION ELEMENT
-                  if(category===record.get('Categoria')){
-                    console.log('acc item: ', category+": " +record.get('Titulo'));
-                    let description=!record.get("Descripción")?"":record.get("Descripción")
-                    //CREATE THE ACCORDION ITEM
-                      $('#accordion-'+record.get('id-categoria')).append(`<div class="accordion-item">
-                              <h2 class="accordion-header" id="heading-`+record.get('id-categoria')+`-`+recordItem+`">
-                                <button class="accordion-button lead collapsed" type="button" data-bs-toggle="collapse"
-                                  data-bs-target="#collapse-`+record.get('id-categoria')+`-`+recordItem+`" aria-expanded="false" aria-controls="collapse-`+record.get('id-categoria')+`-`+recordItem+`">
-                                  `+ record.get("Titulo")+` - `+record.get("Precio") +`
-                                </button>
-                              </h2>
-                              <div id="collapse-`+record.get('id-categoria')+`-`+recordItem+`" class="accordion-collapse collapse" aria-labelledby="heading-`+record.get('id-categoria')+`-`+recordItem+`"
-                                data-bs-parent="#accordion-`+record.get('id-categoria')+`">
-                                <div class="accordion-body">
-                                  <p class="text-secondary">`+ description +`</p>
-                                </div>
+              //GET CATEGORIES
+              let arrayCategories=[]
+              records.forEach(function(record) {
+                  console.log('Retrieved', record.get('id-categoria'));
+                  arrayCategories.push(record.get('Categoria'))
+                  //CREATE THE CATEGORIA ELEMENT
+                  if($('#accordion-'+record.get('id-categoria')).length==0){
+                      $("#carta-zone-col").html($("#carta-zone-col").html()+`<div class="card border bg-white text-dark  mt-3 mt-xl-5">
+                            <div class="card-body">
+                              <h3 class="fs-4 my-3">`+record.get('Categoria')+`</h3>
+                              <div class="accordion" id="accordion-`+record.get('id-categoria')+`">
+                                
+                                
+                                
                               </div>
-                            </div>`)
+                              
+                            </div>
+                          </div>`)
+                        }
+              });
 
-                            recordItem=recordItem+1
-                  }
-            });
-        })
-            
+              //Remove repeated categories
+                arrayCategories = arrayCategories.filter(function(item, pos) {
+                    return arrayCategories.indexOf(item) == pos;
+                })
+              //LOOP FOR EVERY CATEGORY
+              arrayCategories.forEach((category)=>{
+                  recordItem=0;
+                  records.forEach(function(record) {
+                      //FILTER THE ACCORDION ELEMENT
+                        if(category===record.get('Categoria')){
+                          //console.log('acc item: ', category+": " +record.get('Titulo'));
+                          let description=!record.get("Descripción")?"":record.get("Descripción")
+                          //CREATE THE ACCORDION ITEM
+                            $('#accordion-'+record.get('id-categoria')).append(`<div class="accordion-item">
+                                    <h2 class="accordion-header" id="heading-`+record.get('id-categoria')+`-`+recordItem+`">
+                                      <button class="accordion-button lead collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse-`+record.get('id-categoria')+`-`+recordItem+`" aria-expanded="false" aria-controls="collapse-`+record.get('id-categoria')+`-`+recordItem+`">
+                                        `+ record.get("Titulo")+` - `+record.get("Precio") +`
+                                      </button>
+                                    </h2>
+                                    <div id="collapse-`+record.get('id-categoria')+`-`+recordItem+`" class="accordion-collapse collapse" aria-labelledby="heading-`+record.get('id-categoria')+`-`+recordItem+`"
+                                      data-bs-parent="#accordion-`+record.get('id-categoria')+`">
+                                      <div class="accordion-body">
+                                        <p class="text-secondary">`+ description +`</p>
+                                      </div>
+                                    </div>
+                                  </div>`)
+
+                                  recordItem=recordItem+1
+                        }
+                  });
+              })
+                  
 
 
-        // To fetch the next page of records, call `fetchNextPage`.
-        // If there are more records, `page` will get called again.
-        // If there are no more records, `done` will get called.
-        fetchNextPage();
+              // To fetch the next page of records, call `fetchNextPage`.
+              // If there are more records, `page` will get called again.
+              // If there are no more records, `done` will get called.
+              fetchNextPage();
 
-    }, function done(err) {
-        if (err) { console.error(err); return; }
-    });
+          }, function done(err) {
+              if (err) { console.error(err); return; }
+          });
+
+
+     //READ BEBIDAS
+          
+
+          base('Carta de Bebidas').select({
+              // Selecting the first 3 records in Grid view:
+              maxRecords: 150,
+              view: "Grid view"
+          }).eachPage(function page(records, fetchNextPage) {
+              // This function (`page`) will get called for each page of records.
+
+              //GET CATEGORIES
+              let arrayCategories=[]
+              records.forEach(function(record) {
+                  //console.log('Retrieved', record.get('id-categoria'));
+                  arrayCategories.push(record.get('Categoria'))
+                  //CREATE THE CATEGORIA ELEMENT
+                  if($('#accordion-bebida-'+record.get('id-categoria')).length==0){
+                      $("#carta-bebida-zone-col").html($("#carta-bebida-zone-col").html()+`<div class="card border bg-white text-dark  mt-3 mt-xl-5">
+                            <div class="card-body">
+                              <h3 class="fs-4 my-3">`+record.get('Categoria')+`</h3>
+                              <div class="accordion-bebida" id="accordion-bebida-`+record.get('id-categoria')+`">
+                                
+                                
+                                
+                              </div>
+                              
+                            </div>
+                          </div>`)
+                        }
+              });
+
+              //Remove repeated categories
+                arrayCategories = arrayCategories.filter(function(item, pos) {
+                    return arrayCategories.indexOf(item) == pos;
+                })
+              //LOOP FOR EVERY CATEGORY
+              //alert(isNight)
+              arrayCategories.forEach((category)=>{
+                  recordItem=0;
+                  records.forEach(function(record) {
+                      //FILTER THE ACCORDION ELEMENT
+                        if(category===record.get('Categoria')){
+                          //console.log('acc item: ', category+": " +record.get('Titulo'));
+                          //CREATE THE ACCORDION ITEM
+                            let precioPublico=record.get("Precio")
+                            
+                            if(isNight && precioPublico!=undefined){
+                              precioPublico=record.get("Precio noche")
+                            }
+                              $('#accordion-bebida-'+record.get('id-categoria')).append(`<div class="accordion-bebida-item">
+                                    <h2 class="accordion-bebida-header" id="heading-bebida-`+record.get('id-categoria')+`-`+recordItem+`">
+                                      <div class="accordion-button lead collapsed no-knob">
+                                        `+ record.get("Titulo")+` - `+record.get("Precio") +`
+                                      </div>
+                                    </h2>
+                                  </div>`)
+                            
+                            
+
+                                  recordItem=recordItem+1
+                        }
+                  });
+              })
+                  
+
+
+              // To fetch the next page of records, call `fetchNextPage`.
+              // If there are more records, `page` will get called again.
+              // If there are no more records, `done` will get called.
+              fetchNextPage();
+
+          }, function done(err) {
+              if (err) { console.error(err); return; }
+          });
   </script>
+
+
 </body>
 
 </html>
