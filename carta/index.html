@@ -17,6 +17,7 @@
 
   <script>
     let isNight=new Date().getHours()<8;
+    console.log("isNight: ",isNight)
   </script>
 
 
@@ -216,7 +217,7 @@
               //GET CATEGORIES
               let arrayCategories=[]
               records.forEach(function(record) {
-                  console.log('Retrieved', record.get('id-categoria'));
+                  //console.log('Retrieved', record.get('id-categoria'));
                   arrayCategories.push(record.get('Categoria'))
                   //CREATE THE CATEGORIA ELEMENT
                   if($('#accordion-'+record.get('id-categoria')).length==0){
