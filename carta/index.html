@@ -331,10 +331,12 @@
                             if(isNight && precioPublico!=undefined){
                               precioPublico=record.get("Precio noche")
                             }
+
+                            let titulo = record.get("Titulo")+` - `+precioPublico
                               $('#accordion-bebida-'+record.get('id-categoria')).append(`<div class="accordion-bebida-item">
                                     <h2 class="accordion-bebida-header" id="heading-bebida-`+record.get('id-categoria')+`-`+recordItem+`">
                                       <div class="accordion-button lead collapsed no-knob">
-                                        `+ record.get("Titulo")+` - `+record.get("Precio") +`
+                                        `+ titulo +`
                                       </div>
                                     </h2>
                                   </div>`)
