@@ -251,8 +251,8 @@
                           let description=!record.get("Descripción")?"":record.get("Descripción")
                           //DETECT LANGUAGE
                             if(isOtherLanguage()){
-                              titulo=record.get("Titulo_en")+` - `+record.get("Precio")
-                              description=!record.get("Descripción_en")?"":record.get("Descripción_en")
+                              //titulo=record.get("Titulo_en")+` - `+record.get("Precio")
+                              //description=!record.get("Descripción_en")?"":record.get("Descripción_en")
                             }
                           //CREATE THE ACCORDION ITEM
                             $('#accordion-'+record.get('id-categoria')).append(`<div class="accordion-item">
@@ -337,7 +337,13 @@
                               precioPublico=record.get("Precio noche")
                             }
 
-                            let titulo = record.get("Titulo")+` - `+precioPublico
+                            let titulo = record.get("Titulo")+` - `+precioPublico;
+                          
+                            //DETECT LANGUAGE
+                              if(isOtherLanguage()){
+                                //titulo = record.get("Titulo_en")+` - `+precioPublico;
+                              }
+                          
                               $('#accordion-bebida-'+record.get('id-categoria')).append(`<div class="accordion-bebida-item">
                                     <h2 class="accordion-bebida-header" id="heading-bebida-`+record.get('id-categoria')+`-`+recordItem+`">
                                       <div class="accordion-button lead collapsed no-knob">
