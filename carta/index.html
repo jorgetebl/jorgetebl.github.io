@@ -251,7 +251,8 @@
                           let description=!record.get("Descripción")?"":record.get("Descripción")
                           //DETECT LANGUAGE
                             if(isOtherLanguage()){
-                              console.log("other lang:",navigator.language)
+                              titulo=record.get("Titulo_en")+` - `+record.get("Precio")
+                              description=!record.get("Descripción_en")?"":record.get("Descripción_en")
                             }
                           //CREATE THE ACCORDION ITEM
                             $('#accordion-'+record.get('id-categoria')).append(`<div class="accordion-item">
