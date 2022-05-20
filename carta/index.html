@@ -247,13 +247,14 @@
                       //FILTER THE ACCORDION ELEMENT
                         if(category===record.get('Categoria')){
                           //console.log('acc item: ', category+": " +record.get('Titulo'));
+                          let titulo=record.get("Titulo")+` - `+record.get("Precio")
                           let description=!record.get("Descripción")?"":record.get("Descripción")
                           //CREATE THE ACCORDION ITEM
                             $('#accordion-'+record.get('id-categoria')).append(`<div class="accordion-item">
                                     <h2 class="accordion-header" id="heading-`+record.get('id-categoria')+`-`+recordItem+`">
                                       <button class="accordion-button lead collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapse-`+record.get('id-categoria')+`-`+recordItem+`" aria-expanded="false" aria-controls="collapse-`+record.get('id-categoria')+`-`+recordItem+`">
-                                        `+ record.get("Titulo")+` - `+record.get("Precio") +`
+                                        `+ titulo +`
                                       </button>
                                     </h2>
                                     <div id="collapse-`+record.get('id-categoria')+`-`+recordItem+`" class="accordion-collapse collapse" aria-labelledby="heading-`+record.get('id-categoria')+`-`+recordItem+`"
