@@ -249,6 +249,10 @@
                           //console.log('acc item: ', category+": " +record.get('Titulo'));
                           let titulo=record.get("Titulo")+` - `+record.get("Precio")
                           let description=!record.get("Descripción")?"":record.get("Descripción")
+                          //DETECT LANGUAGE
+                            if(isOtherLanguage()){
+                              console.log("other lang:",navigator.language)
+                            }
                           //CREATE THE ACCORDION ITEM
                             $('#accordion-'+record.get('id-categoria')).append(`<div class="accordion-item">
                                     <h2 class="accordion-header" id="heading-`+record.get('id-categoria')+`-`+recordItem+`">
@@ -358,6 +362,16 @@
           }, function done(err) {
               if (err) { console.error(err); return; }
           });
+    
+    
+        function isOtherLanguage(){
+            if(navigator.language.indexOf("es")>=0 || navigator.language.indexOf("ES")>=0){
+              return false
+            }
+            else{
+              return true;
+            }
+          }
   </script>
 
 
